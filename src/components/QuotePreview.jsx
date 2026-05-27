@@ -50,7 +50,7 @@ const QuotePreview = ({ data }) => {
 
                 {/* Header Section */}
                 {/* Header Section */}
-                <table className="w-full mb-6 text-[12px]" style={{ width: '100%', border: 'none' }}>
+                <table border="0" cellSpacing="0" cellPadding="0" className="w-full mb-6 text-[12px]" style={{ width: '100%', border: 'none' }}>
                     <tbody>
                         <tr>
                             <td className="w-[60%] align-top" style={{ width: '60%', border: 'none' }}>
@@ -73,7 +73,7 @@ const QuotePreview = ({ data }) => {
 
                 {/* Title Section */}
                 {/* Title Section */}
-                <table style={{ width: '100%', border: 'none', marginBottom: '24px', marginTop: '16px' }}>
+                <table border="0" cellSpacing="0" cellPadding="0" style={{ width: '100%', border: 'none', marginBottom: '24px', marginTop: '16px' }}>
                     <tbody>
                         <tr>
                             <td style={{ width: '30%', border: 'none' }}></td>
@@ -90,7 +90,7 @@ const QuotePreview = ({ data }) => {
 
                 {/* Customer Info */}
                 <div className="mb-4">
-                    <table className="w-full text-left font-medium" style={{ width: '100%', border: 'none' }}>
+                    <table border="0" cellSpacing="0" cellPadding="0" className="w-full text-left font-medium" style={{ width: '100%', border: 'none' }}>
                         <tbody>
                             <tr>
                                 <td className="py-1 w-[120px]" style={{ width: '120px', border: 'none' }}>Khách hàng:</td>
@@ -113,16 +113,16 @@ const QuotePreview = ({ data }) => {
                 </div>
 
                 {/* Main Table */}
-                <table border="1" className="w-full border-collapse border border-black text-center text-[12px] mb-2" style={{ width: '100%', borderCollapse: 'collapse', borderColor: 'black' }}>
+                <table border="1" cellPadding="6" className="w-full border-collapse border border-black text-center text-[12px] mb-2" style={{ width: '100%', borderCollapse: 'collapse', borderColor: 'black' }}>
                     <thead>
                         <tr className="bg-[#dcfce7] font-bold" style={{ backgroundColor: '#dcfce7' }}>
-                            <th className="border border-black p-2" style={{ width: '40px' }}>STT</th>
-                            <th className="border border-black p-2">Tên hàng hóa, dịch vụ</th>
-                            <th className="border border-black p-2" style={{ width: '80px' }}>Hình Ảnh</th>
-                            <th className="border border-black p-2" style={{ width: '64px' }}>Đơn vị<br />tính</th>
-                            {!hasTiers && <th className="border border-black p-2" style={{ width: '64px' }}>Số lượng</th>}
-                            {!hasTiers && <th className="border border-black p-2" style={{ width: '96px' }}>Đơn giá</th>}
-                            {!hasTiers && <th className="border border-black p-2" style={{ width: '96px' }}>Thành tiền</th>}
+                            <th className="border border-black p-2 bg-[#dcfce7]" style={{ width: '40px', backgroundColor: '#dcfce7' }}>STT</th>
+                            <th className="border border-black p-2 bg-[#dcfce7]" style={{ backgroundColor: '#dcfce7' }}>Tên hàng hóa, dịch vụ</th>
+                            <th className="border border-black p-2 bg-[#dcfce7]" style={{ width: '80px', backgroundColor: '#dcfce7' }}>Hình Ảnh</th>
+                            <th className="border border-black p-2 bg-[#dcfce7]" style={{ width: '64px', backgroundColor: '#dcfce7' }}>Đơn vị<br />tính</th>
+                            {!hasTiers && <th className="border border-black p-2 bg-[#dcfce7]" style={{ width: '64px', backgroundColor: '#dcfce7' }}>Số lượng</th>}
+                            {!hasTiers && <th className="border border-black p-2 bg-[#dcfce7]" style={{ width: '96px', backgroundColor: '#dcfce7' }}>Đơn giá</th>}
+                            {!hasTiers && <th className="border border-black p-2 bg-[#dcfce7]" style={{ width: '96px', backgroundColor: '#dcfce7' }}>Thành tiền</th>}
                         </tr>
                     </thead>
                     <tbody>
@@ -183,14 +183,14 @@ const QuotePreview = ({ data }) => {
                 {hasTiers && qtyTiers.length > 0 && (
                     <div className="mt-4 mb-4">
                         <div className="font-bold underline mb-1.5 text-[13px]">Bố cục Bảng giá theo mốc:</div>
-                        <table border="1" className="w-full border-collapse border border-black text-center text-[12px] mb-4" style={{ width: '100%', borderCollapse: 'collapse', borderColor: 'black' }}>
+                        <table border="1" cellPadding="6" className="w-full border-collapse border border-black text-center text-[12px] mb-4" style={{ width: '100%', tableLayout: 'fixed', borderCollapse: 'collapse', borderColor: 'black' }}>
                             <thead>
                                 <tr className="bg-[#f1f5f9] font-bold" style={{ backgroundColor: '#f1f5f9' }}>
-                                    <th className="border border-black p-2 text-center" style={{ width: '20%' }}>Mốc số lượng</th>
-                                    <th className="border border-black p-2 text-right" style={{ width: '20%' }}>Đơn giá / bộ<br />(Chưa VAT)</th>
-                                    <th className="border border-black p-2 text-right" style={{ width: '20%' }}>Thành tiền<br />(Chưa VAT)</th>
-                                    <th className="border border-black p-2 text-right" style={{ width: '20%' }}>Thuế GTGT<br />({data.taxRate}%)</th>
-                                    <th className="border border-black p-2 text-right" style={{ width: '20%' }}>Tổng cộng thanh<br />toán (Có VAT)</th>
+                                    <th className="border border-black p-2 text-center bg-[#f1f5f9]" style={{ width: '20%', backgroundColor: '#f1f5f9' }}>Mốc số lượng</th>
+                                    <th className="border border-black p-2 text-right bg-[#f1f5f9]" style={{ width: '20%', backgroundColor: '#f1f5f9' }}>Đơn giá / bộ<br />(Chưa VAT)</th>
+                                    <th className="border border-black p-2 text-right bg-[#f1f5f9]" style={{ width: '20%', backgroundColor: '#f1f5f9' }}>Thành tiền<br />(Chưa VAT)</th>
+                                    <th className="border border-black p-2 text-right bg-[#f1f5f9]" style={{ width: '20%', backgroundColor: '#f1f5f9' }}>Thuế GTGT<br />({data.taxRate}%)</th>
+                                    <th className="border border-black p-2 text-right bg-[#f1f5f9]" style={{ width: '20%', backgroundColor: '#f1f5f9' }}>Tổng cộng thanh<br />toán (Có VAT)</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -212,11 +212,11 @@ const QuotePreview = ({ data }) => {
 
                                     return (
                                         <tr key={qty} className="hover:bg-slate-50/50">
-                                            <td className="border border-black p-2 font-bold text-center">{qty} {data.items[0]?.unit || 'bộ'}</td>
-                                            <td className="border border-black p-2 text-right font-medium">{formatCurrency(donGiaBo)} đ</td>
-                                            <td className="border border-black p-2 text-right font-medium">{formatCurrency(thanhTien)} đ</td>
-                                            <td className="border border-black p-2 text-right text-slate-600">{formatCurrency(thueVAT)} đ</td>
-                                            <td className="border border-black p-2 text-right font-bold bg-slate-50">{formatCurrency(tongCong)} đ</td>
+                                            <td className="border border-black p-2 font-bold text-center" style={{ width: '20%' }}>{qty} {data.items[0]?.unit || 'bộ'}</td>
+                                            <td className="border border-black p-2 text-right font-medium" style={{ width: '20%' }}>{formatCurrency(donGiaBo)} đ</td>
+                                            <td className="border border-black p-2 text-right font-medium" style={{ width: '20%' }}>{formatCurrency(thanhTien)} đ</td>
+                                            <td className="border border-black p-2 text-right text-slate-600" style={{ width: '20%' }}>{formatCurrency(thueVAT)} đ</td>
+                                            <td className="border border-black p-2 text-right font-bold bg-slate-50" style={{ width: '20%', backgroundColor: '#f8fafc' }}>{formatCurrency(tongCong)} đ</td>
                                         </tr>
                                     );
                                 })}
@@ -238,7 +238,7 @@ const QuotePreview = ({ data }) => {
                         Ngày ..... tháng ..... năm .........
                     </div>
 
-                    <table className="w-full text-center font-bold" style={{ width: '100%', border: 'none' }}>
+                    <table border="0" cellSpacing="0" cellPadding="0" className="w-full text-center font-bold" style={{ width: '100%', border: 'none' }}>
                         <tbody>
                             <tr>
                                 <td className="w-1/3 align-top" style={{ width: '33.33%', border: 'none' }}>
