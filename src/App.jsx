@@ -104,9 +104,11 @@ function App() {
         discount: 0,
         useTiers: true,
         priceTiers: [
-          { minQty: 100, price: 420000 },
-          { minQty: 200, price: 400000 },
-          { minQty: 500, price: 380000 }
+          { minQty: 100, price: 380000 },
+          { minQty: 200, price: 360000 },
+          { minQty: 300, price: 340000 },
+          { minQty: 400, price: 330000 },
+          { minQty: 500, price: 320000 }
         ]
       },
       {

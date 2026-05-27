@@ -7,6 +7,20 @@ const QuotePreview = ({ data }) => {
     const taxAmount = (subtotal * data.taxRate) / 100;
     const total = subtotal + taxAmount;
 
+    const hasTiers = data.items.some(item => item.useTiers && item.priceTiers && item.priceTiers.length > 0);
+
+    const getQtyTiers = () => {
+        const qtySet = new Set();
+        data.items.forEach(item => {
+            if (item.useTiers && item.priceTiers) {
+                item.priceTiers.forEach(t => qtySet.add(t.minQty));
+            }
+        });
+        return Array.from(qtySet).sort((a, b) => a - b);
+    };
+
+    const qtyTiers = getQtyTiers();
+
     // Format tiền tệ kiểu Việt Nam (dấu chấm)
     const formatCurrency = (val) => new Intl.NumberFormat('vi-VN').format(val);
 
@@ -106,9 +120,9 @@ const QuotePreview = ({ data }) => {
                             <th className="border border-black p-2">Tên hàng hóa, dịch vụ</th>
                             <th className="border border-black p-2" style={{ width: '80px' }}>Hình Ảnh</th>
                             <th className="border border-black p-2" style={{ width: '64px' }}>Đơn vị<br />tính</th>
-                            <th className="border border-black p-2" style={{ width: '64px' }}>Số lượng</th>
-                            <th className="border border-black p-2" style={{ width: '96px' }}>Đơn giá</th>
-                            <th className="border border-black p-2" style={{ width: '96px' }}>Thành tiền</th>
+                            {!hasTiers && <th className="border border-black p-2" style={{ width: '64px' }}>Số lượng</th>}
+                            {!hasTiers && <th className="border border-black p-2" style={{ width: '96px' }}>Đơn giá</th>}
+                            {!hasTiers && <th className="border border-black p-2" style={{ width: '96px' }}>Thành tiền</th>}
                         </tr>
                     </thead>
                     <tbody>
@@ -131,35 +145,85 @@ const QuotePreview = ({ data }) => {
                                         ) : null}
                                     </td>
                                     <td className="border border-black p-1.5">{item.unit}</td>
-                                    <td className="border border-black p-1.5">{item.quantity}</td>
-                                    <td className="border border-black p-1.5 text-right">{formatCurrency(item.price)}</td>
-                                    <td className="border border-black p-1.5 text-right font-bold">{formatCurrency(itemTotal)}</td>
+                                    {!hasTiers && <td className="border border-black p-1.5">{item.quantity}</td>}
+                                    {!hasTiers && <td className="border border-black p-1.5 text-right">{formatCurrency(item.price)}</td>}
+                                    {!hasTiers && <td className="border border-black p-1.5 text-right font-bold">{formatCurrency(itemTotal)}</td>}
                                 </tr>
                             )
                         })}
                         {/* Summary Rows */}
-                        <tr className="font-bold">
-                            <td colSpan="5" className="border border-black p-2 text-left">Cộng tiền hàng:</td>
-                            <td className="border border-black p-2 border-r-0"></td>
-                            <td className="border border-black p-2 text-right">{formatCurrency(subtotal)}</td>
-                        </tr>
-                        <tr className="font-bold">
-                            <td colSpan="5" className="border border-black p-2 text-left">Thuế GTGT ({data.taxRate}%):</td>
-                            <td className="border border-black p-2 border-r-0"></td>
-                            <td className="border border-black p-2 text-right">{formatCurrency(taxAmount)}</td>
-                        </tr>
-                        <tr className="font-bold">
-                            <td colSpan="5" className="border border-black p-2 text-left">Tổng cộng:</td>
-                            <td className="border border-black p-2 text-center text-[13px]">{data.items.reduce((sum, item) => sum + Number(item.quantity), 0)}</td>
-                            <td className="border border-black p-2 text-right text-[13px]">{formatCurrency(total)}</td>
-                        </tr>
-                        <tr>
-                            <td colSpan="7" className="border border-black p-2 text-left italic">
-                                Số tiền viết bằng chữ: {numberToWords(total)}
-                            </td>
-                        </tr>
+                        {!hasTiers && (
+                            <>
+                                <tr className="font-bold">
+                                    <td colSpan="5" className="border border-black p-2 text-left">Cộng tiền hàng:</td>
+                                    <td className="border border-black p-2 border-r-0"></td>
+                                    <td className="border border-black p-2 text-right">{formatCurrency(subtotal)}</td>
+                                </tr>
+                                <tr className="font-bold">
+                                    <td colSpan="5" className="border border-black p-2 text-left">Thuế GTGT ({data.taxRate}%):</td>
+                                    <td className="border border-black p-2 border-r-0"></td>
+                                    <td className="border border-black p-2 text-right">{formatCurrency(taxAmount)}</td>
+                                </tr>
+                                <tr className="font-bold">
+                                    <td colSpan="5" className="border border-black p-2 text-left">Tổng cộng:</td>
+                                    <td className="border border-black p-2 text-center text-[13px]">{data.items.reduce((sum, item) => sum + Number(item.quantity), 0)}</td>
+                                    <td className="border border-black p-2 text-right text-[13px]">{formatCurrency(total)}</td>
+                                </tr>
+                                <tr>
+                                    <td colSpan="7" className="border border-black p-2 text-left italic">
+                                        Số tiền viết bằng chữ: {numberToWords(total)}
+                                    </td>
+                                </tr>
+                            </>
+                        )}
                     </tbody>
                 </table>
+
+                {/* Bảng giá theo mốc số lượng */}
+                {hasTiers && qtyTiers.length > 0 && (
+                    <div className="mt-4 mb-4">
+                        <div className="font-bold underline mb-1.5 text-[13px]">Bố cục Bảng giá theo mốc:</div>
+                        <table border="1" className="w-full border-collapse border border-black text-center text-[12px] mb-4" style={{ width: '100%', borderCollapse: 'collapse', borderColor: 'black' }}>
+                            <thead>
+                                <tr className="bg-[#f1f5f9] font-bold" style={{ backgroundColor: '#f1f5f9' }}>
+                                    <th className="border border-black p-2 text-center" style={{ width: '20%' }}>Mốc số lượng</th>
+                                    <th className="border border-black p-2 text-right" style={{ width: '20%' }}>Đơn giá / bộ<br />(Chưa VAT)</th>
+                                    <th className="border border-black p-2 text-right" style={{ width: '20%' }}>Thành tiền<br />(Chưa VAT)</th>
+                                    <th className="border border-black p-2 text-right" style={{ width: '20%' }}>Thuế GTGT<br />({data.taxRate}%)</th>
+                                    <th className="border border-black p-2 text-right" style={{ width: '20%' }}>Tổng cộng thanh<br />toán (Có VAT)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {qtyTiers.map(qty => {
+                                    let donGiaBo = 0;
+                                    data.items.forEach(item => {
+                                        if (item.useTiers && item.priceTiers && item.priceTiers.length > 0) {
+                                            const sorted = [...item.priceTiers].sort((a, b) => b.minQty - a.minQty);
+                                            const match = sorted.find(t => qty >= t.minQty);
+                                            donGiaBo += match ? match.price : (item.basePrice || item.price);
+                                        } else {
+                                            donGiaBo += item.price;
+                                        }
+                                    });
+
+                                    const thanhTien = donGiaBo * qty;
+                                    const thueVAT = (thanhTien * data.taxRate) / 100;
+                                    const tongCong = thanhTien + thueVAT;
+
+                                    return (
+                                        <tr key={qty} className="hover:bg-slate-50/50">
+                                            <td className="border border-black p-2 font-bold text-center">{qty} {data.items[0]?.unit || 'bộ'}</td>
+                                            <td className="border border-black p-2 text-right font-medium">{formatCurrency(donGiaBo)} đ</td>
+                                            <td className="border border-black p-2 text-right font-medium">{formatCurrency(thanhTien)} đ</td>
+                                            <td className="border border-black p-2 text-right text-slate-600">{formatCurrency(thueVAT)} đ</td>
+                                            <td className="border border-black p-2 text-right font-bold bg-slate-50">{formatCurrency(tongCong)} đ</td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
 
                 {/* Footer Notes & Signatures */}
                 <div className="mt-2 text-[12px]">
