@@ -117,7 +117,14 @@ const QuotePreview = ({ data }) => {
                             return (
                                 <tr key={item.id}>
                                     <td className="border border-black p-1.5">{index + 1}</td>
-                                    <td className="border border-black p-1.5 text-left">{item.name}</td>
+                                    <td className="border border-black p-1.5 text-left">
+                                        <div className="font-bold">{item.name}</div>
+                                        {item.priceTiers && item.priceTiers.length > 0 && (
+                                            <div className="text-[10px] text-slate-500 mt-0.5 italic print:text-slate-600">
+                                                * Chính sách giá: {item.priceTiers.map(t => `>${t.minQty} ${item.unit || 'bộ'}: ${formatCurrency(t.price)}đ`).join(' | ')}
+                                            </div>
+                                        )}
+                                    </td>
                                     <td className="border border-black p-1.5 h-14" style={{ height: '70px', verticalAlign: 'middle', textAlign: 'center' }}>
                                         {item.image ? (
                                             <img src={item.image} alt="ảnh" width="70" height="70" style={{ maxWidth: '70px', maxHeight: '70px', display: 'block', margin: '0 auto' }} />

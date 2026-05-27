@@ -93,8 +93,34 @@ function App() {
     repPhone: '0912.528.316',
     repEmail: 'Salesqvn@gmail.com',
     items: [
-      { id: 1, name: 'Quần áo BHLĐ KCT DK', image: 'https://placehold.co/100x60?text=Áo', unit: 'Bộ', quantity: 50, price: 450000, discount: 0 },
-      { id: 2, name: 'May chun đai lưng quần', image: '', unit: 'Cái', quantity: 50, price: 20000, discount: 0 }
+      {
+        id: 1,
+        name: 'Quần áo BHLĐ KCT DK',
+        image: 'https://placehold.co/100x60?text=Áo',
+        unit: 'Bộ',
+        quantity: 50,
+        price: 450000,
+        basePrice: 450000,
+        discount: 0,
+        useTiers: true,
+        priceTiers: [
+          { minQty: 100, price: 420000 },
+          { minQty: 200, price: 400000 },
+          { minQty: 500, price: 380000 }
+        ]
+      },
+      {
+        id: 2,
+        name: 'May chun đai lưng quần',
+        image: '',
+        unit: 'Cái',
+        quantity: 50,
+        price: 20000,
+        basePrice: 20000,
+        discount: 0,
+        useTiers: false,
+        priceTiers: []
+      }
     ],
     taxRate: 8,
     terms: 'Điều Khoản Thương Mại:\n1. Giá trên đã bao gồm chi phí in ấn may thêm đai lưng.\n2.Giao hàng: Thời gian giao hàng từ 7-15 ngày đối với hàng có sẵn và 20-25 ngày với hàng đặt may riêng\n3. Địa điểm giao hàng : Tại kho bên bán, hoặc theo thỏa thuận.\n4. Hình Thức thanh toán : Bên mua thanh toán 30 % khi đã nhận đủ các chứng từ liên quan.\n5. Báo giá có hiệu lực trong vòng 30 ngày kể từ khi báo giá.'
@@ -261,7 +287,7 @@ function App() {
       ...prev,
       items: [
         ...prev.items,
-        { id: Date.now(), name: '', image: '', unit: '', quantity: 1, price: 0, discount: 0 }
+        { id: Date.now(), name: '', image: '', unit: '', quantity: 1, price: 0, basePrice: 0, discount: 0, useTiers: false, priceTiers: [] }
       ]
     }));
   };
