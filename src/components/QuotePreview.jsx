@@ -63,8 +63,10 @@ const QuotePreview = ({ data }) => {
                             </td>
                             <td className="w-[40%] pl-4 text-center align-top" style={{ width: '40%', border: 'none' }}>
                                 <div className="font-bold border-b border-black pb-1 mb-1 inline-block uppercase" style={{ borderBottom: '1.5px solid black' }}>Chuyên</div>
-                                <div className="text-left italic whitespace-pre-line leading-tight">
-                                    {data.companySpecialty}
+                                <div className="text-left italic leading-tight">
+                                    {data.companySpecialty && data.companySpecialty.split('\n').map((line, i) => (
+                                        <div key={i}>{line}</div>
+                                    ))}
                                 </div>
                             </td>
                         </tr>
@@ -229,8 +231,15 @@ const QuotePreview = ({ data }) => {
                 <div className="mt-2 text-[12px]">
                     <div className="mb-4 text-justify">
                         <div className="font-bold underline mb-1">Ghi chú / Điều khoản:</div>
-                        <div className="whitespace-pre-line leading-relaxed">
-                            {data.terms.replace('Điều Khoản Thương Mại:\n', '').replace('Điều Khoản Thương Mại:', '')}
+                        <div className="leading-relaxed text-justify">
+                            {data.terms && data.terms
+                                .replace('Điều Khoản Thương Mại:\n', '')
+                                .replace('Điều Khoản Thương Mại:', '')
+                                .split('\n')
+                                .map((line, i) => (
+                                    <div key={i} style={{ marginBottom: '4px' }}>{line}</div>
+                                ))
+                            }
                         </div>
                     </div>
 
