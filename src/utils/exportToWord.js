@@ -25,7 +25,7 @@ export const exportHTMLToWord = (elementId, filename = 'document') => {
         }
         body { 
             font-family: 'Times New Roman', Times, serif; 
-            font-size: 11pt; 
+            font-size: 12pt; 
             line-height: 1.4; 
             color: #000000;
         }
@@ -38,7 +38,7 @@ export const exportHTMLToWord = (elementId, filename = 'document') => {
         th, td { 
             padding: 6px 8px; 
             border: 0px none;
-            font-size: 10pt;
+            font-size: 11pt;
             vertical-align: middle;
         }
         

@@ -15,20 +15,20 @@ const ContractPreview = ({ data }) => {
     return (
         <div className="w-full max-w-[850px] mx-auto bg-transparent border-none">
             {/* Richtext Document Editor Block */}
-            <div id="contract-preview-content" className="bg-white p-10 md:p-14 lg:p-[80px] text-[15px] font-['Times_New_Roman',_Times,_serif] text-slate-900 shadow-xl print:shadow-none min-h-[1122px] w-[794px] mx-auto box-border" style={{ lineHeight: '1.5' }}>
+            <div id="contract-preview-content" className="bg-white p-10 md:p-14 lg:p-[80px] text-[12pt] font-['Times_New_Roman',_Times,_serif] text-slate-900 shadow-xl print:shadow-none min-h-[1122px] w-[794px] mx-auto box-border" style={{ lineHeight: '1.5' }}>
 
                 {/* Header: Quốc hiệu, tiêu ngữ */}
                 <table className="w-full mb-8" style={{ border: 'none', width: '100%' }}>
                     <tbody>
                         <tr>
                             <td className="w-[40%] text-center align-top" style={{ border: 'none', width: '40%' }}>
-                                <p className="font-bold text-[14px] uppercase mb-1">CÔNG TY TNHH QVN VIỆT NAM</p>
-                                <p className="font-bold text-[14px] border-b-[1.5px] border-slate-900 inline-block pb-0.5 mb-1 text-center min-w-[120px]">Số: {data.id}</p>
+                                <p className="font-bold text-[12pt] uppercase mb-1">CÔNG TY TNHH QVN VIỆT NAM</p>
+                                <p className="font-bold text-[12pt] border-b-[1.5px] border-slate-900 inline-block pb-0.5 mb-1 text-center min-w-[120px]">Số: {data.id}</p>
                             </td>
                             <td className="w-[60%] text-center align-top" style={{ border: 'none', width: '60%' }}>
-                                <h2 className="text-[16px] font-bold uppercase tracking-wide mb-1">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h2>
-                                <p className="text-[16px] font-bold mb-1 border-b-[1.5px] border-slate-900 inline-block pb-0.5">Độc lập - Tự do - Hạnh phúc</p>
-                                <p className="italic mt-4 text-[15px]">Hà Nội, ngày {data.date ? new Date(data.date).getDate().toString().padStart(2, '0') : '...'} tháng {data.date ? (new Date(data.date).getMonth() + 1).toString().padStart(2, '0') : '...'} năm {data.date ? new Date(data.date).getFullYear() : '20...'}</p>
+                                <h2 className="text-[13pt] font-bold uppercase tracking-wide mb-1">CỘNG HÒA XÃ HỘI CHỦ NGHĨA VIỆT NAM</h2>
+                                <p className="text-[13pt] font-bold mb-1 border-b-[1.5px] border-slate-900 inline-block pb-0.5">Độc lập - Tự do - Hạnh phúc</p>
+                                <p className="italic mt-4 text-[12pt]">Hà Nội, ngày {data.date ? new Date(data.date).getDate().toString().padStart(2, '0') : '...'} tháng {data.date ? (new Date(data.date).getMonth() + 1).toString().padStart(2, '0') : '...'} năm {data.date ? new Date(data.date).getFullYear() : '20...'}</p>
                             </td>
                         </tr>
                     </tbody>
@@ -36,7 +36,7 @@ const ContractPreview = ({ data }) => {
 
                 {/* Tiêu đề Hợp đồng */}
                 <div className="text-center mb-8" style={{ textAlign: 'center' }}>
-                    <h1 className="text-[22px] font-bold uppercase mb-2">
+                    <h1 className="text-[16pt] font-bold uppercase mb-2">
                         {data.documentType !== 'contract' ? 'PHỤ LỤC HỢP ĐỒNG KINH TẾ' : 'HỢP ĐỒNG KINH TẾ'}
                     </h1>
                     {data.documentType !== 'contract' ? (
@@ -59,7 +59,7 @@ const ContractPreview = ({ data }) => {
 
                 {/* Thông tin Bên A */}
                 <div className="mb-6">
-                    <h3 className="font-bold uppercase text-[15px] mb-2 underline">BÊN BÁN (BÊN A): {data.partyAName}</h3>
+                    <h3 className="font-bold uppercase text-[12pt] mb-2 underline">BÊN BÁN (BÊN A): {data.partyAName}</h3>
                     <table className="w-full" style={{ border: 'none', width: '100%' }}>
                         <tbody>
                             <tr>
@@ -82,7 +82,7 @@ const ContractPreview = ({ data }) => {
                                 <td className="font-bold py-1 text-left" style={{ border: 'none' }}>Đại diện:</td>
                                 <td className="py-1 text-left" style={{ border: 'none' }}>
                                     <span className="font-bold">{data.partyARep}</span>
-                                    <span style={{ marginLeft: '40px' }}></span><span className="font-bold">Chức vụ:</span> {data.partyARole}
+                                    <span style={{ display: 'inline-block', width: '40px' }}>&nbsp;&nbsp;&nbsp;&nbsp;</span><span className="font-bold">Chức vụ:</span> {data.partyARole}
                                 </td>
                             </tr>
                         </tbody>
@@ -91,7 +91,7 @@ const ContractPreview = ({ data }) => {
 
                 {/* Thông tin Bên B */}
                 <div className="mb-6">
-                    <h3 className="font-bold uppercase text-[15px] mb-2 underline">BÊN MUA (BÊN B): {data.partyBName || '........................................................'}</h3>
+                    <h3 className="font-bold uppercase text-[12pt] mb-2 underline">BÊN MUA (BÊN B): {data.partyBName || '........................................................'}</h3>
                     <table className="w-full" style={{ border: 'none', width: '100%' }}>
                         <tbody>
                             <tr>
@@ -114,7 +114,7 @@ const ContractPreview = ({ data }) => {
                                 <td className="font-bold py-1 text-left" style={{ border: 'none' }}>Đại diện:</td>
                                 <td className="py-1 text-left" style={{ border: 'none' }}>
                                     <span className="font-bold">{data.partyBRep || '................................................'}</span>
-                                    <span style={{ marginLeft: '40px' }}></span><span className="font-bold">Chức vụ:</span> {data.partyBRole || '.....................'}
+                                    <span style={{ display: 'inline-block', width: '40px' }}>&nbsp;&nbsp;&nbsp;&nbsp;</span><span className="font-bold">Chức vụ:</span> {data.partyBRole || '.....................'}
                                 </td>
                             </tr>
                         </tbody>
@@ -148,39 +148,39 @@ const ContractPreview = ({ data }) => {
                             )}
 
                             {data.documentType === 'appendix_addition' ? (
-                                <table border="1" className="w-full border-collapse border border-black my-4 text-[14px]" style={{ width: '100%', borderCollapse: 'collapse', borderColor: 'black' }}>
+                                <table border="1" className="w-full border-collapse border border-solid border-black my-4 text-[11pt]" style={{ width: '100%', borderCollapse: 'collapse', borderColor: 'black', border: '1px solid black' }}>
                                     <thead>
                                         <tr className="font-bold text-center bg-[#e5e7eb]" style={{ backgroundColor: '#e5e7eb' }}>
-                                            <th className="p-3 border border-black" style={{ width: '15%' }}>STT</th>
-                                            <th className="p-3 border border-black" style={{ width: '85%' }}>Chủng loại/Quy cách hàng hóa</th>
+                                            <th className="p-3 border border-solid border-black" style={{ width: '15%', border: '1px solid black' }}>STT</th>
+                                            <th className="p-3 border border-solid border-black" style={{ width: '85%', border: '1px solid black' }}>Chủng loại/Quy cách hàng hóa</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         {data.items.map((item, index) => (
                                             <tr key={item.id}>
-                                                <td className="p-4 border-x border-black border-b border-dotted border-b-black text-center text-[15px]">{index + 1}</td>
-                                                <td className="p-4 border-x border-black border-b border-dotted border-b-black text-left font-bold text-[15px]">{item.name || ''}</td>
+                                                <td className="p-4 border border-solid border-black text-center text-[11pt]" style={{ border: '1px solid black' }}>{index + 1}</td>
+                                                <td className="p-4 border border-solid border-black text-left font-bold text-[11pt]" style={{ border: '1px solid black' }}>{item.name || ''}</td>
                                             </tr>
                                         ))}
                                     </tbody>
                                 </table>
                             ) : (
-                                <table border="1" className="w-full border-collapse border border-black my-4 text-[14px]" style={{ width: '100%', borderCollapse: 'collapse', borderColor: 'black' }}>
+                                <table border="1" className="w-full border-collapse border border-solid border-black my-4 text-[11pt]" style={{ width: '100%', borderCollapse: 'collapse', borderColor: 'black', border: '1px solid black' }}>
                                     <thead>
                                         <tr className="font-bold text-center">
-                                            <th className="p-2 border border-black" style={{ width: '40px' }}>STT</th>
-                                            <th className="p-2 border border-black">Tên hàng hóa, quy cách</th>
+                                            <th className="p-2 border border-solid border-black" style={{ width: '40px', border: '1px solid black' }}>STT</th>
+                                            <th className="p-2 border border-solid border-black" style={{ border: '1px solid black' }}>Tên hàng hóa, quy cách</th>
                                             {data.documentType === 'appendix_quantity' && (
-                                                <th className="p-2 border border-black" style={{ width: '96px' }}>Hình ảnh</th>
+                                                <th className="p-2 border border-solid border-black" style={{ width: '96px', border: '1px solid black' }}>Hình ảnh</th>
                                             )}
-                                            <th className="p-2 border border-black" style={{ width: '64px' }}>ĐVT</th>
-                                            <th className="p-2 border border-black" style={{ width: '64px' }}>SL</th>
+                                            <th className="p-2 border border-solid border-black" style={{ width: '64px', border: '1px solid black' }}>ĐVT</th>
+                                            <th className="p-2 border border-solid border-black" style={{ width: '64px', border: '1px solid black' }}>SL</th>
                                             {data.documentType === 'appendix_quantity' ? (
-                                                <th className="p-2 border border-black" style={{ width: '96px' }}>Ghi chú</th>
+                                                <th className="p-2 border border-solid border-black" style={{ width: '96px', border: '1px solid black' }}>Ghi chú</th>
                                             ) : (
                                                 <>
-                                                    <th className="p-2 border border-black" style={{ width: '112px' }}>Đơn giá (VNĐ)</th>
-                                                    <th className="p-2 border border-black" style={{ width: '128px' }}>Thành tiền (VNĐ)</th>
+                                                    <th className="p-2 border border-solid border-black" style={{ width: '112px', border: '1px solid black' }}>Đơn giá (VNĐ)</th>
+                                                    <th className="p-2 border border-solid border-black" style={{ width: '128px', border: '1px solid black' }}>Thành tiền (VNĐ)</th>
                                                 </>
                                             )}
                                         </tr>
@@ -188,21 +188,21 @@ const ContractPreview = ({ data }) => {
                                     <tbody>
                                         {data.items.map((item, index) => (
                                             <tr key={item.id}>
-                                                <td className="p-2 border border-black text-center align-middle">{index + 1}</td>
-                                                <td className="p-2 border border-black text-left align-middle">{item.name || ''}</td>
+                                                <td className="p-2 border border-solid border-black text-center align-middle" style={{ border: '1px solid black' }}>{index + 1}</td>
+                                                <td className="p-2 border border-solid border-black text-left align-middle" style={{ border: '1px solid black' }}>{item.name || ''}</td>
                                                 {data.documentType === 'appendix_quantity' && (
-                                                    <td className="p-2 border border-black text-center align-middle" style={{ height: '70px' }}>
+                                                    <td className="p-2 border border-solid border-black text-center align-middle" style={{ height: '70px', border: '1px solid black' }}>
                                                         {item.image && <img src={item.image} alt="Hinh" width="70" height="70" style={{ maxWidth: '70px', maxHeight: '70px', display: 'block', margin: '0 auto', objectFit: 'contain' }} />}
                                                     </td>
                                                 )}
-                                                <td className="p-2 border border-black text-center align-middle">{item.unit || ''}</td>
-                                                <td className="p-2 border border-black text-center align-middle">{item.quantity > 0 ? item.quantity : ''}</td>
+                                                <td className="p-2 border border-solid border-black text-center align-middle" style={{ border: '1px solid black' }}>{item.unit || ''}</td>
+                                                <td className="p-2 border border-solid border-black text-center align-middle" style={{ border: '1px solid black' }}>{item.quantity > 0 ? item.quantity : ''}</td>
                                                 {data.documentType === 'appendix_quantity' ? (
-                                                    <td className="p-2 border border-black text-left align-middle">{item.note || ''}</td>
+                                                    <td className="p-2 border border-solid border-black text-left align-middle" style={{ border: '1px solid black' }}>{item.note || ''}</td>
                                                 ) : (
                                                     <>
-                                                        <td className="p-2 border border-black text-right align-middle">{item.price > 0 ? item.price.toLocaleString() : ''}</td>
-                                                        <td className="p-2 border border-black text-right align-middle">
+                                                        <td className="p-2 border border-solid border-black text-right align-middle" style={{ border: '1px solid black' }}>{item.price > 0 ? item.price.toLocaleString() : ''}</td>
+                                                        <td className="p-2 border border-solid border-black text-right align-middle" style={{ border: '1px solid black' }}>
                                                             {(item.quantity > 0 && item.price > 0) ? (item.quantity * item.price).toLocaleString() : ''}
                                                         </td>
                                                     </>
@@ -213,26 +213,26 @@ const ContractPreview = ({ data }) => {
                                         {data.documentType !== 'appendix_quantity' && (
                                             <>
                                                 <tr>
-                                                    <td colSpan={5} className="p-2 border border-black font-bold text-right uppercase">
+                                                    <td colSpan={5} className="p-2 border border-solid border-black font-bold text-right uppercase" style={{ border: '1px solid black' }}>
                                                         Tổng cộng tiền hàng:
                                                     </td>
-                                                    <td className="p-2 border border-black font-bold text-right">
+                                                    <td className="p-2 border border-solid border-black font-bold text-right" style={{ border: '1px solid black' }}>
                                                         {data.items.reduce((acc, item) => acc + (item.quantity * item.price), 0).toLocaleString()}
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colSpan={5} className="p-2 border border-black font-bold text-right uppercase">
+                                                    <td colSpan={5} className="p-2 border border-solid border-black font-bold text-right uppercase" style={{ border: '1px solid black' }}>
                                                         Thuế GTGT ({data.taxRate}%):
                                                     </td>
-                                                    <td className="p-2 border border-black font-bold text-right">
+                                                    <td className="p-2 border border-solid border-black font-bold text-right" style={{ border: '1px solid black' }}>
                                                         {(data.items.reduce((acc, item) => acc + (item.quantity * item.price), 0) * (data.taxRate / 100)).toLocaleString()}
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td colSpan={5} className="p-2 border border-black font-bold text-right uppercase">
+                                                    <td colSpan={5} className="p-2 border border-solid border-black font-bold text-right uppercase" style={{ border: '1px solid black' }}>
                                                         Tổng GIÁ TRỊ HỢP ĐỒNG ĐÃ BAO GỒM THUẾ (VNĐ):
                                                     </td>
-                                                    <td className="p-2 border border-black font-bold text-right">
+                                                    <td className="p-2 border border-solid border-black font-bold text-right" style={{ border: '1px solid black' }}>
                                                         {totalValue.toLocaleString()}
                                                     </td>
                                                 </tr>
@@ -242,7 +242,7 @@ const ContractPreview = ({ data }) => {
                                 </table>
                             )}
                             {data.documentType === 'contract' && (
-                                <p className="mt-2 text-[15px]">
+                                <p className="mt-2 text-[12pt]">
                                     <span className="font-bold underline italic">Bằng chữ:</span> <span className="font-bold">{totalValueInWords}./.</span>
                                 </p>
                             )}
@@ -266,14 +266,14 @@ const ContractPreview = ({ data }) => {
                     <tbody>
                         <tr>
                             <td className="w-[45%] align-top" style={{ width: '45%', border: 'none' }}>
-                                <h3 className="font-bold text-[15px] uppercase mb-1">ĐẠI DIỆN BÊN A</h3>
-                                <p className="text-[14px] italic mb-24" style={{ marginBottom: '96px' }}>(Chữ ký, họ tên, đóng dấu)</p>
+                                <h3 className="font-bold text-[12pt] uppercase mb-1">ĐẠI DIỆN BÊN A</h3>
+                                <p className="text-[11pt] italic mb-24" style={{ marginBottom: '96px' }}>(Chữ ký, họ tên, đóng dấu)</p>
                                 <p className="font-bold">{data.partyARep}</p>
                             </td>
                             <td className="w-[10%]" style={{ width: '10%', border: 'none' }}></td>
                             <td className="w-[45%] align-top" style={{ width: '45%', border: 'none' }}>
-                                <h3 className="font-bold text-[15px] uppercase mb-1">ĐẠI DIỆN BÊN B</h3>
-                                <p className="text-[14px] italic mb-24" style={{ marginBottom: '96px' }}>(Chữ ký, họ tên, đóng dấu)</p>
+                                <h3 className="font-bold text-[12pt] uppercase mb-1">ĐẠI DIỆN BÊN B</h3>
+                                <p className="text-[11pt] italic mb-24" style={{ marginBottom: '96px' }}>(Chữ ký, họ tên, đóng dấu)</p>
                                 <p className="font-bold">{data.partyBRep || '........................................'}</p>
                             </td>
                         </tr>
