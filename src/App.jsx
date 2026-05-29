@@ -221,15 +221,18 @@ function App() {
     id: 'TT-2026-001',
     date: '2026-03-10',
     companyName: 'CÔNG TY TNHH QVN VIỆT NAM',
-    department: 'Phòng Kế Toán',
-    sendTo: 'Giám đốc / Kế toán trưởng',
-    requesterName: 'Nguyễn Văn A',
-    attachedDocs: '02',
-    reason: 'Thanh toán tiền mua vật tư văn phòng phẩm tháng 3/2026',
-    items: [
-      { id: 1, description: 'Mua giấy in A4', amount: 500000, note: '' },
-      { id: 2, description: 'Mua mực máy in', amount: 1500000, note: '' }
-    ]
+    sendTo: 'CÔNG TY CỔ PHẦN TƯ VẤN VÀ XÂY DỰNG THÀNH SƠN',
+    contractNumber: '.../2026/HĐKT/QVN - THANHSON',
+    partyBName: 'công ty Cổ Phần tư vấn và xây dựng Thành Sơn',
+    goodsDescription: 'mua các loại Bảo hộ lao động',
+    paymentPercent: '100',
+    totalContractValue: 26265600,
+    paidAmount: 13132800,
+    paymentAmount: 13132800,
+    bankAccountName: 'QVN VN COM CO., LTD',
+    bankAccountNumber: '3656866789',
+    bankName: 'Ngân hàng Thương mại cổ phần Kỹ Thương Việt Nam (Techcombank)',
+    requestLocation: 'Hà Nội'
   };
 
   const [paymentData, setPaymentData] = useCloudData('payment', defaultPaymentData, activeWorkspace?.id);
